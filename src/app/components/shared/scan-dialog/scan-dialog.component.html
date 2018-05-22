@@ -1,0 +1,54 @@
+<mat-toolbar color="warn"
+             class="height-32">
+  <mat-icon class="fs-15 noHeightWidth">scanner</mat-icon>
+  Scan a new Document
+</mat-toolbar>
+<div class="mainContainer">
+  <div id="dwtcontrolContainer" class="mat-elevation-z2"></div>
+  <div class="rightPanelContainer">
+
+
+    <div class="devices">
+      <mat-form-field *ngIf="loading === false">
+        <mat-select placeholder="Select a Scanner"
+                    [(value)]="selectedDevice"
+                    (selectionChange)="onSelectDeviceChange($event)">
+          <mat-option *ngFor="let device of deviceNames | async"
+                      [value]="device">
+            {{device}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-icon-button
+              (click)="refreshDevices()"
+              *ngIf="loading === false">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </div>
+
+
+    <span class="spinner" *ngIf="loading === true">
+      {{spinnerTitle | async }}
+      <mat-progress-spinner class="example-margin"
+                            color="primary"
+                            mode="indeterminate">
+      </mat-progress-spinner>
+    </span>
+
+    <div class="scan">
+      <button mat-raised-button
+              color="warn"
+              [disabled]="!selectedDevice"
+              (click)="scan()"
+              *ngIf="loading === false"> SCAN </button>
+    </div>
+
+
+
+    <button class="bottom" *ngIf="loading === false"
+            mat-raised-button
+            color="accent"
+            (click)="onCancelClick()"> close </button>
+      {{ progress | async }}
+  </div>
+</div>

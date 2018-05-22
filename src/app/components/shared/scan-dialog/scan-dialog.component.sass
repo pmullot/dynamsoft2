@@ -1,0 +1,102 @@
+@import '~@angular/material/theming'
+
+\:host
+  width: 100%
+  height: 100%
+  display: grid
+  grid-template-columns: 1fr
+  grid-template-rows: 32px auto
+  grid-gap: 10px
+  box-sizing: border-box
+
+
+
+.mainContainer
+  width: 100%
+  height: 100%
+  padding: 5px
+  box-sizing: border-box
+  display: grid
+  grid-template-columns: 1fr 1fr
+  grid-template-rows: 1fr
+
+#dwtcontrolContainer
+  display: block
+  @include mat-elevation(3)
+
+.dynamsoft-dwt-container-box
+  height: 100% !important
+  width: 100% !important
+
+::ng-deep .dynamsoft-dwt-container-box div
+  border: none !important
+  background-color: yellow
+
+.rightPanelContainer
+  width: 100%
+  height: 100%
+  display: grid
+  grid-template-columns: 1fr
+  grid-template-rows: 1fr 1fr 1fr 1fr 2fr 40px
+  grid-template-areas: "devices" "scan" "saveFile" "saveFB" "spinner" "bottom"
+/*   align-content: center
+  justify-items: center */
+
+button
+  max-height: 32px
+
+.params
+  display: grid
+  width: 100%
+  align-content: center
+  justify-items: center
+
+.devices
+  display: flex
+  grid-area: devices
+
+.buttons
+  display: flex
+  flex: 1 1 auto
+  justify-content: space-between
+
+.bottom
+  grid-area: bottom
+  justify-self: end
+
+.scan
+  grid-area: scan
+  width: 100%
+  align-self: center
+  text-align: center
+  padding: 0 20px
+  box-sizing: border-box
+
+  button
+    width: 100%
+
+.saveFile
+  grid-area: saveFile
+  justify-content: space-between
+  display: flex
+
+  mat-form-field
+    width: 100%
+
+
+
+
+.saveFB
+  grid-area: saveFB
+  width: 100%
+  align-self: center
+  text-align: center
+  padding: 0 20px
+  box-sizing: border-box
+
+  button
+    width: 100%
+
+.spinner
+  grid-area: spinner
+  justify-self: center
